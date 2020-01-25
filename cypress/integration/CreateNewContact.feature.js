@@ -27,12 +27,12 @@ describe('2. User can create a contact', () => {
 	})
 })
 
-it.skip('3. Displays a name of the new contact', () => {
+it('3. Displays a name of the new contact', () => {
     cy.visit('http://localhost:3001') 
-    cy.get('#contact-list').should('contain', 'Thomas')
+    cy.get('#contact-list').should('contain', 'Robin')
 })
 
-it.skip('4. Displays the phone number of the new contact', () => {
+it('4. Displays the phone number of the new contact', () => {
     cy.visit('http://localhost:3001') 
     cy.get('#contact-list').should('contain', '0700 101010')
 })
