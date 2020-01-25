@@ -16,12 +16,13 @@ describe('user can access the site', () => {
 
 describe('user can create a contact', () => {
 	it('test', () => {
-        cy.visit('http://localhost:3001') 
+        cy.visit('http://localhost:3001')         
+		cy.get('#name').type('Robin')
+		cy.get('#email').type('robin@abacuz.se')
+		cy.get('#phone').type('0700 101010')
+		cy.get('#company').type('Craft Academy')
+		cy.get('#notes').type('Awesome coder')
+        cy.get('#twitter').type('@abacuz08')
         cy.get('#add-contact').click()
-        // cy.get('#firstname').type('')
-        // cy.get('#lastname').type('')
-        // cy.get('#mobile').type('')
-        // cy.get('#email').type('')
-        // cy.get('#address').type('')
 	})
 })
