@@ -7,16 +7,12 @@ I would like to be able to create a contact for them in my address book
 
 // userCanCreateAContact.feature.js
 
-
-describe('1. User can access the site', () => {
-	it('test', () => {
-        cy.visit('http://localhost:3001') 
-	})
+before(() => {
+    cy.visit('http://localhost:3001')
 })
 
 describe('2. User can create a contact', () => {
 	it('test', () => {      
-        cy.visit('http://localhost:3001') 
 		cy.get('#name').type('Robin')
 		cy.get('#email').type('robin@abacuz.se')
 		cy.get('#phone').type('0700 101010')
@@ -28,11 +24,9 @@ describe('2. User can create a contact', () => {
 })
 
 it('3. Displays a name of the new contact', () => {
-    cy.visit('http://localhost:3001') 
     cy.get('#contact-list').should('contain', 'Robin')
 })
 
 it('4. Displays the phone number of the new contact', () => {
-    cy.visit('http://localhost:3001') 
     cy.get('#contact-list').should('contain', '0700 101010')
 })
