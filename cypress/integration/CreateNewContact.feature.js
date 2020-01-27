@@ -9,6 +9,7 @@ I would like to be able to create a contact for them in my address book
 
 before(() => {
     cy.visit('http://localhost:3001')
+    cy.get('#add-contact').click()
 })
 
 describe('2. User can create a contact', () => {

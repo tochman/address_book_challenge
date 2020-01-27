@@ -1,7 +1,7 @@
 describe('user can toggle visibility of the form', () => {
 
 	before(() => {
-		cy.visit('http://localhost:3001')
+                cy.visit('http://localhost:3001')
 	})
 	
 	it('by clicking the "Add Contact" button', () => {
