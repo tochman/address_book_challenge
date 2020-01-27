@@ -7,16 +7,16 @@ const  renderContacts = () => {
   if (contacts) {
 	div.innerHTML = ''
 	const  ul = document.createElement('ul')
-
+    i = 0
 	contacts.forEach(contact  => {
 		let  li = document.createElement('li')
-
 		li.innerHTML = `
-        <span>${contact.name}</span> | <span>${contact.email}</span> | <span>${contact.phone}</span> | <span>${contact.company}</span> | <span>${contact.notes}</span> | <span>${contact.twitter}</span> | <input type="button" value="Update" onclick="updateContact(this.parentElement)"/> <input type="button" value="Delete" onclick="RemoveContact(this.parentElement)"/>
+        <span>${contact.name}</span> | <span>${contact.email}</span> | <span>${contact.phone}</span> | <span>${contact.company}</span> | <span>${contact.notes}</span> | <span>${contact.twitter}</span> | <input type="button" value="Update" onclick="updateContact(${i})"/> <input type="button" value="Delete" onclick="RemoveContact(${i})"/>
 	    `
-	    ul.appendChild(li)
+        ul.appendChild(li)
+        i++;
 	  })
-			
+		
 	  div.appendChild(ul)
 	} else {
 	  div.innerHTML = '<p>You have no contacts in your address book</p>'
@@ -50,9 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			company:  company.value,
 			notes:  notes.value,
 			twitter:  twitter.value,
-		}
-
-		console.log(contact)
+        }
+        
 		let contacts = JSON.parse(storage.getItem('contacts')) || []
 		contacts.push(contact)
 
@@ -63,8 +62,12 @@ document.addEventListener('DOMContentLoaded', () => {
    })
 })
 
-function RemoveContact(row) {
-    
+function RemoveContact(toBeRemoved) {
+    let newContacts = JSON.parse(storage.getItem('contacts'))
+    newContacts.splice(toBeRemoved, 1);
+    console.log(newContacts)  
+    storage.clear()
+    storage.setItem('contacts', JSON.stringify(newContacts))
     renderContacts()
 }
 
@@ -72,3 +75,6 @@ function RemoveAllContact() {
     storage.clear()
     renderContacts()
 }
+
+
+

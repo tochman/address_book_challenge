@@ -52,3 +52,7 @@ input[type="submit"] {
 #addcontact {
 
 }
+
+#removeall {
+   bottom: 0;
+}
