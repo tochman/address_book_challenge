@@ -12,7 +12,7 @@ const  renderContacts = () => {
 		let  li = document.createElement('li')
 
 		li.innerHTML = `
-        <span>${contact.name}</span> | <span>${contact.email}</span> | <span>${contact.phone}</span> | <span>${contact.company}</span> | <span>${contact.notes}</span> | <span>${contact.twitter}</span> | <input type="button" value="Delete" onclick="RemoveContact(this.parentElement)"/>
+        <span>${contact.name}</span> | <span>${contact.email}</span> | <span>${contact.phone}</span> | <span>${contact.company}</span> | <span>${contact.notes}</span> | <span>${contact.twitter}</span> | <input type="button" value="Update" onclick="updateContact(this.parentElement)"/> <input type="button" value="Delete" onclick="RemoveContact(this.parentElement)"/>
 	    `
 	    ul.appendChild(li)
 	  })
@@ -53,9 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		}
 
 		console.log(contact)
-
-		let  contacts = JSON.parse(storage.getItem('contacts')) || []
-
+		let contacts = JSON.parse(storage.getItem('contacts')) || []
 		contacts.push(contact)
 
 		// 2. Save them to our storage
@@ -65,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
    })
 })
 
-function RemoveAllContact() {
-    storage.clear()
+function RemoveContact(row) {
+    
     renderContacts()
 }
 

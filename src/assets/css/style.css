@@ -1,5 +1,5 @@
 body {
-   background:#ccc;
+   background-color: rosybrown;
 }
 
 input[type="text"] {
@@ -18,6 +18,14 @@ input[type="email"] {
 textarea[type="text"] {
 
 }
+
+li {
+   padding: 5px;
+   list-style-type: none;
+}
+li:nth-child(even) {background: #CCC}
+li:nth-child(odd) {background: #FFF}
+
 
 button {
     background-color: #00C5BE;
