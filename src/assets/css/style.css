@@ -1,0 +1,58 @@
+body {
+   background-color: rosybrown;
+}
+
+input[type="text"] {
+height: 20px; 
+margin: 5px; 
+}
+
+label {
+   white-space: nowrap;
+}
+
+input[type="email"] {
+
+}
+
+textarea[type="text"] {
+
+}
+
+li {
+   padding: 5px;
+   list-style-type: none;
+}
+li:nth-child(even) {background: #CCC}
+li:nth-child(odd) {background: #FFF}
+
+
+button {
+    background-color: #00C5BE;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    padding: 5px 20px;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 10px;
+}
+
+input[type="submit"] {
+    background-color: #00C5BE;
+    border: none;
+    color: #fff;
+    font-size: 1em;
+    padding: 5px 20px;
+    text-transform: uppercase;
+    font-weight: normal;
+    margin: 10px;
+}
+
+#addcontact {
+
+}
+
+#removeall {
+   bottom: 0;
+}
