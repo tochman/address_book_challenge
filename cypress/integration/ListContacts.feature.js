@@ -1,5 +1,0 @@
-/* 
-As a user
-In order to contact my friends
-I would like to be able to view a list of my saved contacts
-*/
