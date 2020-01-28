@@ -11,7 +11,8 @@ const  renderContacts = () => {
 	contacts.forEach(contact  => {
 		let  li = document.createElement('li')
 		li.innerHTML = `
-        <span>${contact.name}</span> | <span>${contact.email}</span> | <span>${contact.phone}</span> | <span>${contact.company}</span> | <span>${contact.notes}</span> | <span>${contact.twitter}</span> | <input type="button" value="Update" onclick="updateContact(${i})"/> <input type="button" value="Delete" onclick="RemoveContact(${i})"/>
+		<span>${contact.name}</span> | <span>${contact.email}</span> | <span>${contact.phone}</span> | <span>${contact.company}</span> | <span>${contact.notes}</span> | <span>${contact.twitter}</span> | <input type="button" value="Update" class="updateButton" onclick="updateContact(${i})"/> 
+		<input type="button" value="Delete" class="deleteButton" onclick="RemoveContact(${i})"/>
 	    `
         ul.appendChild(li)
         i++;
@@ -62,19 +63,51 @@ document.addEventListener('DOMContentLoaded', () => {
    })
 })
 
+function updateContact(toBeRemoved) {
+	
+	displayUpdateFields(toBeRemoved)
+	
+	const updateContactForm = document.getElementById('update-contact-form')
+
+	contactForm.addEventListener('submit', event  => {
+		event.preventDefault()
+
+		// 1. Read all the input fields and get their values
+		const { name, email, phone, company, notes, twitter } = contactForm.elements
+
+		const  contact = {
+			name:  name.value,
+			email:  email.value,
+			phone:  phone.value,
+			company:  company.value,
+			notes:  notes.value,
+			twitter:  twitter.value,
+        }
+
+		storage.setItem('contacts', JSON.stringify(contacts))
+		renderContacts()
+		contactForm.reset()
+   })
+
+	let newContacts = JSON.parse(storage.getItem('contacts'))
+    newContacts.splice(toBeRemoved, 1);
+}
+
 function RemoveContact(toBeRemoved) {
     let newContacts = JSON.parse(storage.getItem('contacts'))
     newContacts.splice(toBeRemoved, 1);
-    console.log(newContacts)  
     storage.clear()
     storage.setItem('contacts', JSON.stringify(newContacts))
     renderContacts()
 }
+
 
 function RemoveAllContact() {
     storage.clear()
     renderContacts()
 }
 
-
+function displayUpdateFields(id) {
+    
+}
 
