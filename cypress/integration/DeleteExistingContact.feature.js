@@ -5,7 +5,7 @@ I would like to be able to delete contacts
 */
 
 describe('clicking the "Delete" button', () => {
-  beforeEach(() => {
+  before(() => {
     cy.visit('http://localhost:3001')
     cy.get('#add-contact').click()
     cy.get('#name').type('Robin')
@@ -18,7 +18,8 @@ describe('clicking the "Delete" button', () => {
   })
 
   it('removes the contact', () => {
-    cy.get('#delete-button').click()
+    cy.wait(500)
+    cy.get('.delete-button').click()
     cy.contains('robin@abacuz.se').should('not.exist')
   })
 });

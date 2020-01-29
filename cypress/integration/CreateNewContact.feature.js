@@ -46,10 +46,10 @@ describe('User can create a contact', () => {
   })
 
   it('Displays update button', () => {
-    cy.get('#update-button')
+    cy.get('.update-button')
   })
 
   it('Displays the delete button', () => {
-    cy.get('#delete-button')
+    cy.get('.delete-button')
   })
 })

@@ -1,5 +1,24 @@
 const storage = window.localStorage
 
+const removeContact = (toBeRemoved) => {
+  let newContacts = JSON.parse(storage.getItem('contacts'))
+  newContacts.splice(toBeRemoved, 1);
+  storage.clear()
+  storage.setItem('contacts', JSON.stringify(newContacts))
+  renderContacts()
+}
+
+
+const removeAllContact = () => {
+  storage.clear()
+  renderContacts()
+}
+
+const displayUpdateFields = (id) => {
+  debugger
+}
+
+
 const renderContacts = () => {
   const contacts = JSON.parse(storage.getItem('contacts'))
   let div = document.getElementById('contact-list')
@@ -17,8 +36,8 @@ const renderContacts = () => {
 				<div class="contact-company">${contact.company}</div>
 				<div class="contact-notes">${contact.notes}</div>
 				<div class="contact-twitter">@${contact.twitter}</div>
-				<input type="button" value="Update" id="update-button" onclick="updateContact(${i})"/>
-				<input type="button" value="Delete" id="delete-button" onclick="removeContact(${i})"/>
+				<input type="button" value="Update" class="update-button" onclick="updateContact(${i})"/>
+				<input type="button" value="Delete" class="delete-button" onclick="removeContact(${i})"/>
 				`
       div.appendChild(newDiv)
       i++;
@@ -94,24 +113,5 @@ function updateContact(toBeRemoved) {
   })
 
   let newContacts = JSON.parse(storage.getItem('contacts'))
-  debugger
   newContacts.splice(toBeRemoved, 1);
-}
-
-function removeContact(toBeRemoved) {
-  let newContacts = JSON.parse(storage.getItem('contacts'))
-  newContacts.splice(toBeRemoved, 1);
-  storage.clear()
-  storage.setItem('contacts', JSON.stringify(newContacts))
-  renderContacts()
-}
-
-
-function removeAllContact() {
-  storage.clear()
-  renderContacts()
-}
-
-function displayUpdateFields(id) {
-
 }
