@@ -1,5 +1,6 @@
 body {
-   background-color: white;
+   background-color: #ddd;
+   font-family: 'Muli', sans-serif;
 }
 
 #contact-list {
@@ -29,13 +30,6 @@ input[type=text]:focus {
    background-color: darkgray;
 }
 
-input[type="email"] {
-
-}
-
-textarea[type="text"] {
-
-}
 
 li {
    padding: 5px;
@@ -69,7 +63,7 @@ input[type="submit"] {
 
 .contact-card {
    width: 250px;
-   background: #eee;
+   background: white;
    text-align: center;
    padding: 15px;
    border-radius: 0.4rem;
@@ -84,40 +78,31 @@ input[type="submit"] {
 .contact-name
 {
    font-size: 1.3rem;
-   display: block;
-}
-.contact-email {
-   display: block;
-}
-.contact-phone {
-   display: inline;
-   width: 31%;
-}
-.contact-company {
-   display: inline-block;
-   width: 31%;
-}
-.contact-notes {
-   display: block;
-}
-.contact-twitter {
-   display: block;
 }
 
 .contact-name, .contact-phone,.contact-email, .contact-company, .contact-notes,.contact-twitter {
    text-align: center;
-   background-color: white;
+   background-color: #eee;
    margin: 5px;
    padding: 0.3em 0.75em;
    border-radius: 0.3rem;
    box-shadow: inset 2px 2px 4px #aaa;
+   display: block;
 }
 
 
-.updateButton{
-   margin-top: 5px;
-}
-
-.deleteButton{
+.updateButton, .deleteButton, .deleteButtonKarro{
    margin-top: 5px; 
-}  
+   background-color: #00C5BE;
+   border: none;
+   color: #fff;
+   padding: 5px;
+}
+
+.icon
+{
+   height: 20px;
+   width: 20px;
+   content:url("https://smallimg.pngkey.com/png/small/204-2048196_effect-navigation-address-book-svg-png-icon-free.png");
+   display: inline-block;
+}
