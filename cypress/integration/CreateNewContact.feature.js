@@ -43,4 +43,12 @@ describe('User can create a contact', () => {
 	it('Displays the twitter of the new contact', () => {
 		cy.get('#contact-list').should('contain', 'Abacuz08')
 	})
+
+	it('Displays update button', () => {
+		cy.get('.updateButton')
+	})
+
+	it('Displays the delete button', () => {
+		cy.get('.deleteButton')
+	})
 })

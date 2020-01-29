@@ -10,8 +10,9 @@
 
 <body>
     <h1>Contacts</h1>
-    <button id="add-contact">Add Contact</button>
-
+	<button id="add-contact">Add Contact</button> <button onclick="RemoveAllContact()" id="removeall">Remove All Contacts</button>
+	
+<div class="container">
     <form id="new-contact-form">
 		<label for="name">Name</label>
 		<input id="name" name="name" type="text"></br>
@@ -27,8 +28,8 @@
 		<input id="twitter" name="twitter" type="text"></br>
         <input id="submit" type="submit" value="Save contact">
     </form>
+</div>	
 	<div id="contact-list"></div>
-	<button onclick="RemoveAllContact()" id="removeall">Remove All Contacts</button>
-    <script src="/assets/js/app.js"></script>
+	<script src="/assets/js/app.js"></script>
 </body>
 </html> 
