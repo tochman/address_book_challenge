@@ -6,19 +6,24 @@ const  renderContacts = () => {
   let  div = document.querySelector('#contact-list')
   if (contacts) {
 	div.innerHTML = ''
-	const  ul = document.createElement('ul')
+	//const  ul = document.createElement('ul')
     i = 0
 	contacts.forEach(contact  => {
-		let  li = document.createElement('li')
-		li.innerHTML = `
-		<span>${contact.name}</span> | <span>${contact.email}</span> | <span>${contact.phone}</span> | <span>${contact.company}</span> | <span>${contact.notes}</span> | <span>${contact.twitter}</span> | <input type="button" value="Update" class="updateButton" onclick="updateContact(${i})"/> 
+		var newDiv = document.createElement("div");
+		newDiv.classList.add("contact-card");
+		newDiv.innerHTML = `
+		<div class="contact-name">${contact.name}</div>
+		<div class="contact-email">${contact.email}</div>
+		<div class="contact-phone">${contact.phone}</div>
+		<div class="contact-company">${contact.company}</div>
+		<div class="contact-notes">${contact.notes}</div>
+		<div class="contact-twitter">${contact.twitter}</div>
+		<input type="button" value="Update" class="updateButton" onclick="updateContact(${i})"/> 
 		<input type="button" value="Delete" class="deleteButton" onclick="RemoveContact(${i})"/>
-	    `
-        ul.appendChild(li)
+		`
+        div.appendChild(newDiv)
         i++;
 	  })
-		
-	  div.appendChild(ul)
 	} else {
 	  div.innerHTML = '<p>You have no contacts in your address book</p>'
 	}
