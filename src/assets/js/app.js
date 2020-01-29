@@ -112,7 +112,6 @@ document.addEventListener('DOMContentLoaded', () => {
    })
 })
 
-
 function RemoveContact(toBeRemoved) {
     let newContacts = JSON.parse(storage.getItem('contacts'))
     newContacts.splice(toBeRemoved, 1);
@@ -122,6 +121,7 @@ function RemoveContact(toBeRemoved) {
 }
 
 function RemoveContactKarro(email) {
+	// This is a function that I wrote from how Karolina had done hers... in hopes that Cypress would like it better. 
 	var contacts = JSON.parse(localStorage.contacts);
 	let newContacts = contacts.filter(
 		contact => contact.email !== email 
