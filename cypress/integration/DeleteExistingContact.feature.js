@@ -22,9 +22,8 @@ it('1. Displays a name of the new contact', () => {
     cy.get('#contact-list').should('contain', 'Robin')
 })
 
-it('2. Displays a name of the new contact', () => {
+it('2. Remove the contact', () => {
     cy.get('.deleteButton').click()
-    //cy.get('#deleteButton').click()
 })
 
 it('3. Check that contact is gone', () => {
