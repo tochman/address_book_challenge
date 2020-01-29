@@ -2,7 +2,6 @@ const storage = window.localStorage
 
 const renderContacts = () => {
   const contacts = JSON.parse(storage.getItem('contacts'))
-
   let div = document.getElementById('contact-list')
   if (contacts) {
     div.innerHTML = ''
