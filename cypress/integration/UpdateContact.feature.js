@@ -19,9 +19,15 @@ describe('changing the data and clicking the "Update" button', () => {
   })
 
   it('uppdates the contact', () => {
-    cy.pause()
+      // cy.pause()
+      cy.get('.update-button').click()
 
-    cy.get('.update-button').click()
-    cy.contains('robin@abacuz.se').should('not.exist')
+    cy.get('#new-contact-form').within(()=> {
+      cy.get('#name').clear().type('Thomas')
+      cy.get('#email').clear().type('thomas@craft.se')
+      cy.get('#submit').click()
+    })
+
+    // cy.contains('robin@abacuz.se').should('not.exist')
   })
 });

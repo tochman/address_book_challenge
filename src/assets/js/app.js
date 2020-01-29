@@ -1,4 +1,5 @@
 const storage = window.localStorage
+let contactToUpdate = null
 
 const removeContact = (toBeRemoved) => {
   let newContacts = JSON.parse(storage.getItem('contacts'))
@@ -14,8 +15,29 @@ const removeAllContact = () => {
   renderContacts()
 }
 
-const displayUpdateFields = (id) => {
-  debugger
+const displayUpdateFields = id => {
+  let contacts = JSON.parse(localStorage.getItem('contacts'))
+  let contactToUpdate = contacts[id]
+  let form = document.getElementById('new-contact-form')
+  let indexField = document.createElement('input')
+  indexField.type = 'hidden'
+  indexField.name = 'index'
+  indexField.value = id
+  form.appendChild(indexField)
+  form.elements.type.value = 'updateContact'
+  form.elements.name.value = contactToUpdate.name
+  form.elements.email.value = contactToUpdate.email
+  form.elements.phone.value = contactToUpdate.phone
+  form.elements.company.value = contactToUpdate.company
+  form.elements.notes.value = contactToUpdate.notes
+  form.elements.twitter.value = contactToUpdate.twitter
+  form.elements.submit.value = "Update contact"
+}
+
+const updateContact = (toBeRemoved) => {
+  displayUpdateFields(toBeRemoved)
+  let newContacts = JSON.parse(storage.getItem('contacts'))
+  newContacts.splice(toBeRemoved, 1);
 }
 
 
@@ -63,10 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   contactForm.addEventListener('submit', event => {
     event.preventDefault()
-
-    // 1. Read all the input fields and get their values
     const { name, email, phone, company, notes, twitter } = contactForm.elements
-
     const contact = {
       name: name.value,
       email: email.value,
@@ -75,43 +94,14 @@ document.addEventListener('DOMContentLoaded', () => {
       notes: notes.value,
       twitter: twitter.value,
     }
-
     let contacts = JSON.parse(storage.getItem('contacts')) || []
-    contacts.push(contact)
-
-    // 2. Save them to our storage
+    if (contactForm.elements.type.value === 'newContact') {
+      contacts.push(contact)
+    } else {
+      contacts[parseInt(contactForm.elements.index.value)] = contact
+    }
     storage.setItem('contacts', JSON.stringify(contacts))
     renderContacts()
     contactForm.reset()
   })
 })
-
-function updateContact(toBeRemoved) {
-
-  displayUpdateFields(toBeRemoved)
-
-  const updateContactForm = document.getElementById('update-contact-form')
-
-  contactForm.addEventListener('submit', event => {
-    event.preventDefault()
-
-    // 1. Read all the input fields and get their values
-    const { name, email, phone, company, notes, twitter } = contactForm.elements
-
-    const contact = {
-      name: name.value,
-      email: email.value,
-      phone: phone.value,
-      company: company.value,
-      notes: notes.value,
-      twitter: twitter.value,
-    }
-
-    storage.setItem('contacts', JSON.stringify(contacts))
-    renderContacts()
-    contactForm.reset()
-  })
-
-  let newContacts = JSON.parse(storage.getItem('contacts'))
-  newContacts.splice(toBeRemoved, 1);
-}
